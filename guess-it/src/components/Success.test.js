@@ -1,12 +1,8 @@
-import Enzyme, { shallow } from "enzyme";
-import EnzymeAdapter from "enzyme-adapter-react-16";
-import checkPropTypes from 'check-prop-types';
+import { shallow } from "enzyme";
+
 import App from "../App";
 import Success from "./Success";
-import { findEleByTestAttr } from "../tests/utils";
-
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
+import { findEleByTestAttr, checkProps } from "../tests/utils";
 
 const setup = (props = {}, state = null) => {
   const wrapper = shallow(<Success {...props} />);
@@ -33,9 +29,7 @@ it('displays "Congrats! You guessed it message" on correct guess', () => {
   expect(element.text().length).not.toBe(1);
 });
 
-test('no warning with the expected props', ()=>{
-    const expectedProps = { success: false};
-
-    const propError = checkPropTypes(Success.propTypes, expectedProps, 'prop', Success.name)
-    expect(propError).toBeUndefined();
-})
+test("no warning with the expected props", () => {
+  const expectedProps = { success: true };
+  checkProps(Success.propsType, expectedProps, Success.name);
+});
