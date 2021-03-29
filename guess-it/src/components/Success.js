@@ -1,10 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Success = ({ success=false }) => {
+const Success = ({ success = true }) => {
   if (success) {
-    return <div data-test="component-success">Congrats! You won!</div>;
-  } else {
+    return (
+      <div className="alert alert-success" data-test="component-success">
+        Congrats! You won!
+      </div>
+    );
+  }
+  if (!success) {
     return <div data-test="component-success"></div>;
   }
 };
