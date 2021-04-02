@@ -1,37 +1,43 @@
-import {shallow} from 'enzyme';
-import {findEleByTestAttr, storeFactory} from '../tests/utils'
-import Input from '../connected-components/Input'
+import { shallow } from "enzyme";
+import { findEleByTestAttr, storeFactory } from "../tests/utils";
+import Input from "../connected-components/Input";
 
-const setup = (initialStore ={}) =>{
-    const store = storeFactory(initialStore) 
-    const wrapper = shallow(<Input store={store}/>).dive(); //use dive to get access to base component from higher order component
-}
+const setup = (initialStore = {}) => {
+  const store = storeFactory(initialStore);
+  const wrapper = shallow(<Input store={store} />).dive(); //use dive to get access to base component from higher order component
+  return wrapper;
+};
 
-describe('input element renders', ()=>{
-    describe('words has been guessed', ()=>{
-        test('renders component without error', ()=>{
-            const wrapper = setup()
-            
-        })
-        test('renders submit button', ()=>{
-            const wrapper = setup()
-        
-        })
-        test('word has been guessed',()=>{
+describe("input element renders", () => {
+  describe("words has been guessed", () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
+    test("renders component without error", () => {
+      const component = findEleByTestAttr(wrapper, "component-input");
+      expect(component.length).toBe(1);
+    });
+    test("renders input box without errors", () => {
+        const component = findEleByTestAttr(wrapper, "input-box");
+        expect(component.length).toBe(1);
+      });
+    test("renders submit button", () => {
+      const submut_btn = findEleByTestAttr(wrapper, "submit-btn");
+      expect(submut_btn.length).toBe(1);
+    });
+  });
 
-        })
-    })
-
-    describe('word has been guessed', ()=>{
-        test('does not renders component without error', ()=>{
-
-        })
-        test('does not renders submit button', ()=>{
-
-        })
-        test('word has not been guessed',()=>{
-
-        })
-    })
-    
-})
+  describe("word has been guessed", () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { succes: true };
+      wrapper = setup(initialState);
+    });
+    test("does not renders component without error", () => {
+      
+    });
+    test("does not renders submit button", () => {});
+  });
+});
