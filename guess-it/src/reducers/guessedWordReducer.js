@@ -7,10 +7,10 @@ import { actionTypes } from "../actions";
  * @param {object} action - action to be reduced.
  * @returns {boolean} new success state.
  */
-export const guessedWordsReducer = (state = {}, { action, payload }) => {
+export const guessedWordsReducer = (state = [], { action, payload }) => {
   switch (action) {
     case actionTypes.GUESS_WORD:
-      return null;
+      return [...state, payload]
     default:
         return state;
     }
