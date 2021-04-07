@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "redux";
+import { connect } from "react-redux";
 class Input extends Component {
   render() {
     const formPage = this.props.success ? null : (

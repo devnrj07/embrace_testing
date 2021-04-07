@@ -1,5 +1,6 @@
 import checkPropTypes from "check-prop-types";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import { middlewares } from "../configureStore";
 import {successReducer} from '../reducers/successReducer'
 
 
@@ -22,6 +23,8 @@ export const checkProps = (
   expect(propError).toBeUndefined();
 };
 
-export const storeFactory = (initalState)=>{
-  return createStore(successReducer, initalState)
+export const storeFactory = (initalState={})=>{
+  const createStoreWithMiddleWare = applyMiddleware(...middlewares)(createStore)
+  return createStoreWithMiddleWare(successReducer, initalState)
 }
+

@@ -16,15 +16,15 @@ describe("input element renders", () => {
       wrapper = setup(initialState);
     });
     test("renders component without error", () => {
-      const component = findEleByTestAttr(wrapper, "component-input");
+      const component = findEleByTestAttr(wrapper, 'component-input');
       expect(component.length).toBe(1);
     });
     test("renders input box without errors", () => {
-        const component = findEleByTestAttr(wrapper, "input-box");
+        const component = findEleByTestAttr(wrapper, 'input-box');
         expect(component.length).toBe(1);
       });
     test("renders submit button", () => {
-      const submut_btn = findEleByTestAttr(wrapper, "submit-btn");
+      const submut_btn = findEleByTestAttr(wrapper, 'submit-btn');
       expect(submut_btn.length).toBe(1);
     });
   });
@@ -36,8 +36,13 @@ describe("input element renders", () => {
       wrapper = setup(initialState);
     });
     test("does not renders component without error", () => {
-      
+     const component = findEleByTestAttr(wrapper, 'component-input')
+     console.log({component})
+     expect(component.length).toBe(0)
     });
-    test("does not renders submit button", () => {});
+    test("does not renders submit button", () => {
+        const submitBtn = findEleByTestAttr(wrapper, 'submit-btn')
+        expect(submitBtn.length).toBe(0)
+    });
   });
 });
