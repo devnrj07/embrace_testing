@@ -3,6 +3,7 @@ import "./App.css";
 import Success from "./components/Success";
 import { useState } from "react";
 import GuessWord from "./components/GuessWord";
+import Input from "./connected-components/Input";
 
 function App() {
   const [success, setSuccess] = useState(false);
@@ -10,6 +11,7 @@ function App() {
     <div className="container" data-test="component-app">
       <h1>Guess IT Game!</h1>
       <Success success={success} />
+      {/* <Input success={success} /> */}
       <GuessWord
         guessedWords={[
           { guessedWord: "train", letterMatchCount: 2 },

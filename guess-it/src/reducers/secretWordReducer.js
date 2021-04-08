@@ -1,3 +1,3 @@
-export const secretWordReducer = (state = {}, { action, payload }) => {
+export const secretWord = (state = {}, { action, payload }) => {
   return state;
 };

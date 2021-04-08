@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { successReducer } from "./successReducer";
-import { guessedWordsReducer } from "./guessedWordReducer";
-import { secretWordReducer } from "./secretWordReducer";
+import { success } from "./successReducer";
+import { guessedWords } from "./guessedWordReducer";
+import { secretWord } from "./secretWordReducer";
 
 export default combineReducers({
-  successReducer,
-  guessedWordsReducer,
-  secretWordReducer,
+  success,
+  guessedWords,
+  secretWord,
 });
