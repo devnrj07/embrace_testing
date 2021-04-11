@@ -1,7 +1,7 @@
 import checkPropTypes from "check-prop-types";
 import { applyMiddleware, createStore } from "redux";
 import { middlewares } from "../configureStore";
-import { success } from "../reducers/successReducer";
+import { rootReducer } from "../reducers";
 
 export const findEleByTestAttr = (wrapper, test_attr) => {
   return wrapper.find(`[data-test="${test_attr}"]`);
@@ -26,5 +26,5 @@ export const storeFactory = (initalState = {}) => {
   const createStoreWithMiddleWare = applyMiddleware(...middlewares)(
     createStore
   );
-  return createStoreWithMiddleWare(success, initalState);
+  return createStoreWithMiddleWare(rootReducer, initalState);
 };
