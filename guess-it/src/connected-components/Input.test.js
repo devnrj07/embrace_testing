@@ -46,3 +46,18 @@ describe("input element renders", () => {
     });
   });
 });
+
+describe("redux props", ()=>{
+  test('has success piece of a state prop', ()=>{
+    const success = true;
+    const wrapper = setup({success});
+    const successProps = wrapper.instance().props.success;
+    expect(successProps).toBe(success);
+    
+  })
+  test('`guessWord` creator is a function type prop', ()=>{
+    const wrapper = setup();
+    const guessWordProp = wrapper.instance().props.guessWord;
+    expect(guessWordProp).toBeInstanceOf(Function);
+  })
+})
